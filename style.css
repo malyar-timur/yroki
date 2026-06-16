@@ -242,7 +242,22 @@ main {
   transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.5s;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+  overflow-y: auto;
+}
+
+.slide::-webkit-scrollbar {
+  width: 6px;
+}
+.slide::-webkit-scrollbar-track {
+  background: transparent;
+}
+.slide::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
+}
+.slide::-webkit-scrollbar-thumb:hover {
+  background: var(--neon-cyan);
 }
 
 .slide.active {
@@ -844,6 +859,12 @@ main {
   background: rgba(0, 255, 135, 0.1);
   color: var(--neon-green);
   border-color: rgba(0, 255, 135, 0.2);
+}
+
+.step-item.pink-step .step-badge {
+  background: rgba(255, 0, 127, 0.1);
+  color: var(--neon-pink);
+  border-color: rgba(255, 0, 127, 0.2);
 }
 
 .step-content {
