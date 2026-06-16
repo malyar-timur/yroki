@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>НейроСтарт: ИИ для школьников 8-12 лет | Курс</title>
   <meta name="description" content="Интерактивная презентация-курс по работе с нейросетями для школьников. Как развернуть среду разработки, настроить VPN, получить аккаунт Gemini и защитить себя в сети.">
-  <link rel="stylesheet" href="style.css?v=6">
+  <link rel="stylesheet" href="style.css?v=7">
   <script>
     (function() {
       const hash = window.location.hash;
@@ -231,23 +231,35 @@
               <div class="stack-section">
                 <h3 class="section-title"><span class="section-num">2</span> Интерактивный чат-тренажер</h3>
                 <p style="margin-bottom: 1rem; color: var(--text-muted);">Представь, что тебе пишет незнакомец в Discord и предлагает приз. Как ты поступишь? Пройди симуляцию:</p>
-                <div class="chat-container">
-                  <div class="chat-header">
-                    <div class="avatar"><i data-lucide="user" style="display: block; width: 1.5rem; height: 1.5rem;"></i></div>
-                    <div class="chat-user-info">
-                      <span class="chat-username">Модератор_Игры99</span>
-                      <span class="chat-status">В сети</span>
+                <div class="phone-simulator-container">
+                  <div class="smartphone">
+                    <div class="smartphone-screen chat-screen">
+                      <div class="phone-speaker"></div>
+                      
+                      <div class="chat-header">
+                        <div class="avatar"><i data-lucide="user" style="display: block; width: 1.25rem; height: 1.25rem;"></i></div>
+                        <div class="chat-user-info">
+                          <span class="chat-username">Модератор_Игры99</span>
+                          <span class="chat-status">В сети</span>
+                        </div>
+                        <div class="chat-score-badge">Очки: <span id="chat-score">0</span> / 110</div>
+                      </div>
+                      
+                      <div class="chat-messages" id="chat-messages">
+                        <!-- Messages dynamically loaded by JS -->
+                      </div>
+                      
+                      <div class="chat-explanation" id="chat-explanation">
+                        <!-- Explanation banner -->
+                      </div>
                     </div>
-                    <div class="chat-score-badge">Очки: <span id="chat-score">0</span> из 110</div>
                   </div>
-                  <div class="chat-messages" id="chat-messages">
-                    <!-- Messages dynamically loaded by JS -->
-                  </div>
-                  <div class="chat-explanation" id="chat-explanation">
-                    <!-- Explanation banner -->
-                  </div>
-                  <div class="chat-options" id="chat-options">
-                    <!-- Button options dynamically loaded by JS -->
+                  
+                  <div class="phone-options-wrapper">
+                    <p class="phone-options-title">Что ты ответишь?</p>
+                    <div class="phone-options-list" id="chat-options">
+                      <!-- Button options dynamically loaded by JS -->
+                    </div>
                   </div>
                 </div>
               </div>
