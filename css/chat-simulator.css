@@ -153,13 +153,13 @@
 
 @media (max-width: 768px) {
   .chat-container, .stack-section .chat-container {
-    height: 520px;
+    height: 580px;
   }
 }
 
 @media (max-width: 480px) {
   .chat-container, .stack-section .chat-container {
-    height: 420px;
+    height: 520px;
   }
   .message {
     font-size: 0.82rem;
