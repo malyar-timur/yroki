@@ -99,4 +99,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Perform initial render
   updateSlides();
+
+  // Remove the temporary anti-flicker style tag once DOM layout has initialized
+  const flickerStyle = document.getElementById('hash-flicker-prevent');
+  if (flickerStyle) {
+    flickerStyle.remove();
+  }
 });

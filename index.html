@@ -6,6 +6,23 @@
   <title>НейроСтарт: ИИ для школьников 8-12 лет | Курс</title>
   <meta name="description" content="Интерактивная презентация-курс по работе с нейросетями для школьников. Как развернуть среду разработки, настроить VPN, получить аккаунт Gemini и защитить себя в сети.">
   <link rel="stylesheet" href="style.css">
+  <script>
+    (function() {
+      const hash = window.location.hash;
+      if (hash && hash.startsWith('#slide-')) {
+        const slideNum = parseInt(hash.replace('#slide-', ''), 10);
+        if (!isNaN(slideNum) && slideNum >= 1) {
+          const style = document.createElement('style');
+          style.id = 'hash-flicker-prevent';
+          style.innerHTML = `
+            .slide { display: none !important; pointer-events: none !important; opacity: 0 !important; }
+            #slide-${slideNum - 1} { display: flex !important; opacity: 1 !important; transform: translateX(0) !important; pointer-events: auto !important; }
+          `;
+          document.documentElement.appendChild(style);
+        }
+      }
+    })();
+  </script>
 </head>
 <body>
 
