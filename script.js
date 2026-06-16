@@ -555,8 +555,11 @@ document.addEventListener('DOMContentLoaded', () => {
     chatMessages.appendChild(msgDiv);
     chatMessages.scrollTop = chatMessages.scrollHeight;
 
+    // Shuffle options so the correct answer is not always at the bottom
+    const shuffledOptions = [...scenario.options].sort(() => Math.random() - 0.5);
+
     // Render choice options
-    scenario.options.forEach(opt => {
+    shuffledOptions.forEach(opt => {
       const btn = document.createElement('button');
       btn.className = 'chat-option-btn';
       btn.textContent = opt.text;
