@@ -12,10 +12,23 @@ document.addEventListener('DOMContentLoaded', () => {
   const counterCurrent = document.getElementById('counter-current');
   const counterTotal = document.getElementById('counter-total');
   
-  let currentSlideIndex = 0;
   const totalSlides = slides.length;
   
   if (counterTotal) counterTotal.textContent = totalSlides;
+
+  // Read slide number from URL Hash on page load (e.g. #slide-3 -> index 2)
+  function getSlideIndexFromHash() {
+    const hash = window.location.hash;
+    if (hash && hash.startsWith('#slide-')) {
+      const slideNum = parseInt(hash.replace('#slide-', ''), 10);
+      if (!isNaN(slideNum) && slideNum >= 1 && slideNum <= totalSlides) {
+        return slideNum - 1;
+      }
+    }
+    return 0;
+  }
+
+  let currentSlideIndex = getSlideIndexFromHash();
 
   function updateSlides() {
     slides.forEach((slide, index) => {
@@ -38,6 +51,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Update Counter
     if (counterCurrent) counterCurrent.textContent = currentSlideIndex + 1;
     
+    // Smoothly update URL hash without scrolling the window
+    history.replaceState(null, null, '#slide-' + (currentSlideIndex + 1));
+
     // Refresh icons inside active slides
     if (typeof lucide !== 'undefined') {
       lucide.createIcons();
@@ -72,5 +88,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // Listen to manual URL hash changes (e.g. clicking slide-linked buttons/menu links)
+  window.addEventListener('hashchange', () => {
+    const index = getSlideIndexFromHash();
+    if (index !== currentSlideIndex) {
+      currentSlideIndex = index;
+      updateSlides();
+    }
+  });
+
+  // Perform initial render
   updateSlides();
 });
