@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   // --- SLIDER LOGIC ---
   const slides = document.querySelectorAll('.slide');
-  const sidebarItems = document.querySelectorAll('.slide-list-item');
   const prevBtn = document.getElementById('prev-btn');
   const nextBtn = document.getElementById('next-btn');
   const progressBar = document.getElementById('progress-bar');
@@ -20,14 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
         slide.classList.add('active');
       } else if (index < currentSlideIndex) {
         slide.classList.add('prev-slide');
-      }
-    });
-
-    sidebarItems.forEach((item, index) => {
-      item.classList.toggle('active', index === currentSlideIndex);
-      // Ensure active item is visible in sidebar scrolling
-      if (index === currentSlideIndex) {
-        item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }
     });
 
@@ -62,13 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Sidebar item click listeners
-  sidebarItems.forEach((item, index) => {
-    item.addEventListener('click', () => {
-      currentSlideIndex = index;
-      updateSlides();
-    });
-  });
+
 
   // Keyboard navigation
   document.addEventListener('keydown', (e) => {
