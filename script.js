@@ -346,6 +346,32 @@ document.addEventListener('DOMContentLoaded', () => {
           explanation: 'Правильно! Данные о месте учебы и времени, когда ты остаешься один, никогда не должны сообщаться незнакомцам.'
         }
       ]
+    },
+    {
+      id: 11,
+      username: 'Support_Pay_Admin',
+      avatarColor: 'linear-gradient(135deg, #f59e0b, #eab308)',
+      text: 'Для завершения привязки твоего аккаунта к новой почте поддержки на телефон твоих родителей сейчас придет SMS с кодом. Быстро продиктуй его мне, иначе аккаунт будет заблокирован навсегда!',
+      options: [
+        {
+          text: 'Хорошо, сейчас возьму телефон мамы или папы и пришлю код.',
+          type: 'danger',
+          points: 0,
+          explanation: 'Ошибка! SMS-коды на телефонах родителей часто подтверждают списание денег с банковских карт или вход в Госуслуги. Никогда не бери их телефоны и не сообщай коды.'
+        },
+        {
+          text: 'А это точно безопасно? Напиши мне с официальной почты.',
+          type: 'danger',
+          points: 0,
+          explanation: 'Внимание! Это уловка. Мошенники не могут писать с официальных адресов, но будут торопить тебя, чтобы ты не успел подумать. Не передавай им код!'
+        },
+        {
+          text: 'Я не трогаю телефоны родителей и никому не сообщаю приходящие коды.',
+          type: 'success',
+          points: 10,
+          explanation: 'Правильно! Коды подтверждения из SMS — это секретные цифровые ключи. Их передача посторонним строго запрещена.'
+        }
+      ]
     }
   ];
 
@@ -367,7 +393,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
       const finishedMsg = document.createElement('div');
       finishedMsg.className = 'message received';
-      finishedMsg.innerHTML = `Поздравляем! Ты успешно прошел все 10 тренировок по кибербезопасности! Твой итоговый результат: ${totalScore} очков из 100 возможных. Ты отлично умеешь распознавать реальные угрозы в интернете!`;
+      finishedMsg.innerHTML = `Поздравляем! Ты успешно прошел все 11 тренировок по кибербезопасности! Твой итоговый результат: ${totalScore} очков из 110 возможных. Ты отлично умеешь распознавать реальные угрозы в интернете!`;
       chatMessages.appendChild(finishedMsg);
       
       const restartBtn = document.createElement('button');
@@ -387,7 +413,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const scenario = chatScenarios[currentScenarioIndex];
     
     // Update headers
-    if (chatUsernameEl) chatUsernameEl.textContent = `${scenario.username} (Сценарий ${currentScenarioIndex + 1} из 10)`;
+    if (chatUsernameEl) chatUsernameEl.textContent = `${scenario.username} (Сценарий ${currentScenarioIndex + 1} из 11)`;
     if (avatarEl) avatarEl.style.background = scenario.avatarColor;
 
     // Render original incoming message
