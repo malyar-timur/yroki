@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
+  if (typeof lucide !== 'undefined') {
+    lucide.createIcons();
+  }
   // --- SLIDER LOGIC ---
   const slides = document.querySelectorAll('.slide');
   const prevBtn = document.getElementById('prev-btn');
@@ -199,7 +202,8 @@ document.addEventListener('DOMContentLoaded', () => {
       callAcceptBtn.style.display = 'none';
       callDeclineBtn.style.width = '120px';
       callDeclineBtn.style.borderRadius = '30px';
-      callDeclineBtn.querySelector('.phone-label').textContent = 'Положить трубку';
+      const label = callDeclineBtn.parentElement.querySelector('.phone-label');
+      if (label) label.textContent = 'Положить';
       
       phoneDialogBox.style.display = 'block';
       phoneDialogBox.innerHTML = `
@@ -211,7 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
         // Change feedback state
         showPhoneFeedback(
-          '⚠️ Будь осторожен!', 
+          'Будь осторожен!', 
           'Они просят код из СМС! Если ты продиктуешь его, они украдут твои личные данные. Самый лучший выбор — повесить трубку и перезвонить родителям или по официальному номеру поддержки с сайта оператора!',
           'danger'
         );
@@ -220,7 +224,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     callDeclineBtn.addEventListener('click', () => {
       showPhoneFeedback(
-        '🎉 Правильное решение!',
+        'Правильное решение!',
         'Ты сбросил звонок с незнакомого номера. Если звонят неизвестные люди и пугают блокировками, выигрышами или бедой с близкими — сразу сбрасывай звонок. Никогда не разговаривай с ними!',
         'success'
       );
@@ -235,17 +239,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const descEl = phoneFeedback.querySelector('.phone-feedback-desc');
 
     if (type === 'success') {
-      icon.textContent = '🛡️';
+      icon.innerHTML = '<i data-lucide="shield-check" style="width: 3.5rem; height: 3.5rem; color: var(--neon-green);"></i>';
       icon.style.textShadow = 'var(--green-glow)';
       titleEl.style.color = 'var(--neon-green)';
     } else {
-      icon.textContent = '🚨';
+      icon.innerHTML = '<i data-lucide="alert-triangle" style="width: 3.5rem; height: 3.5rem; color: var(--neon-pink);"></i>';
       icon.style.textShadow = 'var(--pink-glow)';
       titleEl.style.color = 'var(--neon-pink)';
     }
 
     titleEl.textContent = title;
     descEl.textContent = desc;
+
+    if (typeof lucide !== 'undefined') {
+      lucide.createIcons();
+    }
   }
 
   if (resetPhoneBtn) {
@@ -256,7 +264,8 @@ document.addEventListener('DOMContentLoaded', () => {
       callDeclineBtn.style.display = 'flex';
       callDeclineBtn.style.width = '60px';
       callDeclineBtn.style.borderRadius = '50%';
-      callDeclineBtn.querySelector('.phone-label').textContent = 'Сбросить';
+      const label = callDeclineBtn.parentElement.querySelector('.phone-label');
+      if (label) label.textContent = 'Сбросить';
       callerStatus.textContent = 'Входящий вызов...';
       callerStatus.style.color = 'var(--neon-pink)';
     });

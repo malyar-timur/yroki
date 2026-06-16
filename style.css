@@ -1023,3 +1023,67 @@ main {
     margin: 0.5rem 0;
   }
 }
+
+/* Lucide Icons Integration styling */
+.lucide {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.title-icon {
+  margin-left: 0.75rem;
+  width: 1.8rem;
+  height: 1.8rem;
+  color: var(--neon-cyan);
+  filter: drop-shadow(0 0 5px var(--neon-cyan));
+  vertical-align: sub;
+}
+
+.card-icon .lucide {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: var(--neon-cyan);
+}
+
+.feature-card.cyan .card-icon .lucide { color: var(--neon-cyan); }
+.feature-card.purple .card-icon .lucide { color: var(--neon-purple); }
+.feature-card.pink .card-icon .lucide { color: var(--neon-pink); }
+.feature-card.green .card-icon .lucide { color: var(--neon-green); }
+
+.avatar .lucide {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #fff;
+  display: block;
+}
+
+.caller-avatar .lucide {
+  width: 3.5rem;
+  height: 3.5rem;
+  color: var(--neon-pink);
+  display: block;
+}
+
+.call-btn .lucide {
+  width: 1.75rem;
+  height: 1.75rem;
+  color: #fff;
+  display: block;
+}
+
+.phone-feedback-icon .lucide {
+  width: 3.5rem;
+  height: 3.5rem;
+  display: block;
+}
+
+.inline-icon {
+  width: 18px;
+  height: 18px;
+  margin-right: 0.25rem;
+  vertical-align: text-bottom;
+  display: inline-block;
+}
+
