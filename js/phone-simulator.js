@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const phoneOptionsList = document.getElementById('phone-options-list');
   const declineActionGroup = document.getElementById('decline-action-group');
   const acceptActionGroup = document.getElementById('accept-action-group');
+  const phoneScoreEl = document.getElementById('phone-score');
+  const phoneProgressEl = document.getElementById('phone-progress');
 
   // List of 11 realistic phone scam scenarios with pre-generated MP3 neural voice files and multiple choices
   const phoneScams = [
@@ -137,12 +139,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   ];
 
+  let currentScamIndex = 0;
+  let phoneScore = 0;
+  let shuffledScams = [];
   let currentScam = null;
   let dialogTimeout = null;
   let activeAudio = null;
   let hasPickedUp = false;
   let callTimerInterval = null;
   let callSeconds = 0;
+
+  function initPhoneScamSequence() {
+    shuffledScams = [...phoneScams].sort(() => Math.random() - 0.5);
+    currentScamIndex = 0;
+    phoneScore = 0;
+    updateScoreDisplay();
+  }
+
+  function updateScoreDisplay() {
+    if (phoneScoreEl) phoneScoreEl.textContent = phoneScore;
+    if (phoneProgressEl) phoneProgressEl.textContent = Math.min(currentScamIndex + 1, 11);
+  }
 
   function startCallTimer() {
     stopCallTimer();
@@ -219,11 +236,15 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function selectRandomScam() {
-    const randomIndex = Math.floor(Math.random() * phoneScams.length);
-    currentScam = phoneScams[randomIndex];
+    if (currentScamIndex >= shuffledScams.length) {
+      currentScam = null;
+      return;
+    }
+    currentScam = shuffledScams[currentScamIndex];
     if (callerNameEl) {
       callerNameEl.textContent = generateRandomRussianNumber();
     }
+    updateScoreDisplay();
   }
 
   function showPhoneOptions() {
@@ -249,10 +270,12 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Show result feedback based on answer type
         if (opt.type === 'success') {
+          phoneScore += 10;
           showPhoneFeedback('Правильное решение!', opt.explanation, 'success');
         } else {
           showPhoneFeedback('Будь осторожен!', opt.explanation, 'danger');
         }
+        updateScoreDisplay();
       });
       
       phoneOptionsList.appendChild(btn);
@@ -261,7 +284,8 @@ document.addEventListener('DOMContentLoaded', () => {
     phoneOptionsWrapper.style.display = 'block';
   }
 
-  // Choose the first random scam call
+  // Initialize the 11-scam sequence
+  initPhoneScamSequence();
   selectRandomScam();
 
   if (callAcceptBtn && callDeclineBtn) {
@@ -308,6 +332,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // If user hung up during active call, it is always a correct action!
       if (hasPickedUp) {
+        phoneScore += 10;
         showPhoneFeedback(
           'Правильное решение!',
           'Ты сбросил вызов во время разговора. Общение с мошенниками бесполезно и опасно. Сбросив вызов, ты поступил верно!',
@@ -315,12 +340,14 @@ document.addEventListener('DOMContentLoaded', () => {
         );
       } else {
         // User declined ringing call
+        phoneScore += 10;
         showPhoneFeedback(
           'Правильное решение!',
           'Ты сбросил звонок с незнакомого номера. Если звонят неизвестные люди и пугают блокировками, выигрышами или бедой с близкими — сразу сбрасывай звонок. Никогда не разговаривай с ними!',
           'success'
         );
       }
+      updateScoreDisplay();
     });
   }
 
@@ -351,6 +378,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (resetPhoneBtn) {
     resetPhoneBtn.addEventListener('click', () => {
+      if (currentScamIndex === -1) {
+        initPhoneScamSequence();
+        if (resetPhoneBtn) resetPhoneBtn.textContent = 'Продолжить';
+        if (phoneFeedback) phoneFeedback.style.display = 'none';
+        if (phoneDialogBox) phoneDialogBox.style.display = 'none';
+        if (acceptActionGroup) acceptActionGroup.style.display = 'flex';
+        if (declineActionGroup) declineActionGroup.style.display = 'none';
+        if (callerStatus) {
+          callerStatus.textContent = 'Входящий вызов...';
+          callerStatus.style.color = 'var(--neon-pink)';
+        }
+        selectRandomScam();
+        return;
+      }
+
+      // Increment sequence index
+      currentScamIndex++;
+
+      // Check if finished
+      if (currentScamIndex >= shuffledScams.length) {
+        showPhoneFeedback(
+          'Тренировка завершена!',
+          `Поздравляем! Ты успешно прошел все 11 тренировочных звонков. Твой итоговый результат: ${phoneScore} очков из 110 возможных. Ты отлично умеешь распознавать мошенников!`,
+          'success'
+        );
+        if (resetPhoneBtn) resetPhoneBtn.textContent = 'Начать заново';
+        currentScamIndex = -1;
+        return;
+      }
+
       hasPickedUp = false;
       // Stop active audio and timer
       stopAudio();
@@ -368,7 +425,7 @@ document.addEventListener('DOMContentLoaded', () => {
         phoneOptionsList.innerHTML = '';
       }
 
-      // Choose a new random scam
+      // Choose a new scam
       selectRandomScam();
 
       if (phoneFeedback) phoneFeedback.style.display = 'none';
