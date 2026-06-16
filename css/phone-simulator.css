@@ -1,7 +1,8 @@
 /* INTERACTIVE: PHONE CALL SIMULATOR */
 .phone-simulator-container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   margin-top: 1rem;
 }
 
@@ -206,7 +207,61 @@
   border-color: var(--neon-cyan);
 }
 
+
+.phone-options-wrapper {
+  display: none;
+  margin-top: 1.5rem;
+  width: 100%;
+  max-width: 480px;
+  background: #0d121f;
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 1.2rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+.phone-options-title {
+  margin-bottom: 0.75rem;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  text-align: center;
+  font-weight: 600;
+}
+
+.phone-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.phone-option-btn {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--card-border);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--text-main);
+  text-align: left;
+  cursor: pointer;
+  font-size: 0.88rem;
+  transition: var(--transition-smooth);
+}
+
+.phone-option-btn:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--neon-cyan);
+}
+
 .stack-section .phone-simulator-container {
-  max-width: 380px;
+  max-width: 480px;
   margin: 0 auto;
+}
+
+@keyframes wave {
+  0% { transform: scaleY(0.3); }
+  100% { transform: scaleY(1.3); }
+}
+
+.pulsing-soundwave div {
+  transform-origin: center;
 }
