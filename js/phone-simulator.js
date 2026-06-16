@@ -141,18 +141,50 @@ document.addEventListener('DOMContentLoaded', () => {
   let dialogTimeout = null;
   let activeAudio = null;
   let hasPickedUp = false;
+  let callTimerInterval = null;
+  let callSeconds = 0;
+
+  function startCallTimer() {
+    stopCallTimer();
+    callSeconds = 0;
+    updateTimerDisplay();
+    callTimerInterval = setInterval(() => {
+      callSeconds++;
+      updateTimerDisplay();
+    }, 1000);
+  }
+
+  function stopCallTimer() {
+    if (callTimerInterval) {
+      clearInterval(callTimerInterval);
+      callTimerInterval = null;
+    }
+  }
+
+  function updateTimerDisplay() {
+    const mins = Math.floor(callSeconds / 60);
+    const secs = callSeconds % 60;
+    const formatted = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+    if (callerStatus) {
+      callerStatus.textContent = formatted;
+      callerStatus.style.color = 'var(--neon-green)';
+    }
+  }
 
   function playAudio(src) {
     stopAudio();
     activeAudio = new Audio(src);
     activeAudio.play().catch(err => {
       console.log('Audio playback blocked or failed:', err);
-      // Fallback in case audio is blocked or browser does not play: trigger options after 8 seconds anyway
+      // Fallback in case audio is blocked or browser does not play: trigger options after 12 seconds anyway
       triggerOptionsFallback();
     });
 
     // Listen for audio ended event to show options
     activeAudio.addEventListener('ended', () => {
+      stopCallTimer();
+      if (declineActionGroup) declineActionGroup.style.display = 'none';
+      
       // Pause of 1.5s (1500ms) after the audio ends, then show options below the phone
       dialogTimeout = setTimeout(() => {
         showPhoneOptions();
@@ -171,6 +203,8 @@ document.addEventListener('DOMContentLoaded', () => {
   function triggerOptionsFallback() {
     if (dialogTimeout) clearTimeout(dialogTimeout);
     dialogTimeout = setTimeout(() => {
+      stopCallTimer();
+      if (declineActionGroup) declineActionGroup.style.display = 'none';
       showPhoneOptions();
     }, 12000); // Fail-safe timer in case audio is blocked
   }
@@ -233,10 +267,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (callAcceptBtn && callDeclineBtn) {
     callAcceptBtn.addEventListener('click', () => {
       hasPickedUp = true;
-      if (callerStatus) {
-        callerStatus.textContent = 'Разговор...';
-        callerStatus.style.color = 'var(--neon-green)';
-      }
+      startCallTimer();
       if (acceptActionGroup) acceptActionGroup.style.display = 'none';
       if (declineActionGroup) declineActionGroup.style.display = 'flex';
       
@@ -262,8 +293,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     callDeclineBtn.addEventListener('click', () => {
-      // Stop audio playback
+      // Stop audio playback and timer
       stopAudio();
+      stopCallTimer();
 
       // Clear timers
       if (dialogTimeout) {
@@ -321,8 +353,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if (resetPhoneBtn) {
     resetPhoneBtn.addEventListener('click', () => {
       hasPickedUp = false;
-      // Stop active audio
+      // Stop active audio and timer
       stopAudio();
+      stopCallTimer();
 
       // Clear dialog timeout
       if (dialogTimeout) {
