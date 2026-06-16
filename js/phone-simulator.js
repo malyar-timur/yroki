@@ -276,14 +276,13 @@ document.addEventListener('DOMContentLoaded', () => {
         // Hide actual dialogue text on phone screen. Instead, display pulsing wave visualizer
         phoneDialogBox.innerHTML = `
           <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; margin-top:2rem; animation:fadeIn 0.3s ease;">
-            <div class="pulsing-soundwave" style="display:flex; gap:6px; align-items:center; height:50px; margin-bottom:1.5rem;">
+            <div class="pulsing-soundwave" style="display:flex; gap:6px; align-items:center; height:50px;">
               <div style="width:4px; height:20px; background:var(--neon-pink); border-radius:2px; animation:wave 1s ease-in-out infinite alternate;"></div>
               <div style="width:4px; height:40px; background:var(--neon-pink); border-radius:2px; animation:wave 1.2s ease-in-out infinite alternate 0.2s;"></div>
               <div style="width:4px; height:15px; background:var(--neon-pink); border-radius:2px; animation:wave 0.8s ease-in-out infinite alternate 0.4s;"></div>
               <div style="width:4px; height:45px; background:var(--neon-pink); border-radius:2px; animation:wave 1.4s ease-in-out infinite alternate 0.1s;"></div>
               <div style="width:4px; height:25px; background:var(--neon-pink); border-radius:2px; animation:wave 1s ease-in-out infinite alternate 0.3s;"></div>
             </div>
-            <span style="font-size:0.85rem; color:var(--text-muted); letter-spacing:1px; animation:pulse 2s infinite;">ВНИМАТЕЛЬНО СЛУШАЙТЕ СОБЕСЕДНИКА...</span>
           </div>
         `;
         
