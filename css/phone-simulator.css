@@ -82,11 +82,10 @@
 }
 
 .phone-dialog-box {
-  background: rgba(0, 0, 0, 0.4);
-  border-radius: 12px;
+  background: transparent;
   padding: 0.75rem;
   font-size: 0.8rem;
-  border: 1px solid rgba(255,255,255,0.05);
+  border: none;
   margin: 1rem 0;
   display: none;
   text-align: left;
