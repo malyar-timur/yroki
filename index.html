@@ -165,18 +165,19 @@
             </div>
           </div>
         </div>
-        <!-- Slide 2: Security & Simulators -->
+        <!-- Slide 2: Security Workshop -->
         <div class="slide" id="slide-1">
           <div class="slide-header">
             <span class="slide-tag">Раздел 1</span>
             <h2 class="slide-title">Безопасность в сети Интернет <i data-lucide="shield-check" class="title-icon"></i></h2>
           </div>
           <div class="slide-body">
-            <p>Интернет — это увлекательный мир, но в нем важно соблюдать правила безопасности. Прочитай 4 золотых правила и сразу закрепи их в тренажерах справа!</p>
+            <p>Интернет — это увлекательный мир, но в нем важно соблюдать правила безопасности. Прочитай 4 золотых правила и закрепи их на интерактивных тренажерах ниже!</p>
             
-            <div class="security-layout">
-              <!-- Left side: 4 Rules -->
-              <div class="security-rules-column">
+            <div class="security-vertical-stack">
+              <!-- Item 1: 4 Golden Rules -->
+              <div class="stack-section">
+                <h3 class="section-title"><span class="section-num">1</span> Четыре золотых правила безопасности</h3>
                 <div class="steps-container">
                   <div class="step-item">
                     <div class="step-badge">1</div>
@@ -208,85 +209,78 @@
                   </div>
                 </div>
               </div>
-              
-              <!-- Right side: Simulator Tabs -->
-              <div class="security-simulators-column">
-                <div class="simulator-tabs">
-                  <button class="sim-tab active" data-tab="chat">
-                    <i data-lucide="message-square" class="inline-icon"></i> Чат-тренажер
-                  </button>
-                  <button class="sim-tab" data-tab="phone">
-                    <i data-lucide="phone-call" class="inline-icon"></i> Звонок-тренажер
-                  </button>
-                </div>
-                
-                <!-- Tab Content 1: Chat -->
-                <div class="sim-tab-content active" id="sim-tab-chat">
-                  <div class="chat-container">
-                    <div class="chat-header">
-                      <div class="avatar"><i data-lucide="user" style="display: block; width: 1.5rem; height: 1.5rem;"></i></div>
-                      <div class="chat-user-info">
-                        <span class="chat-username">Модератор_Игры99</span>
-                        <span class="chat-status">В сети</span>
-                      </div>
-                    </div>
-                    <div class="chat-messages" id="chat-messages">
-                      <!-- Messages dynamically loaded by JS -->
-                    </div>
-                    <div class="chat-explanation" id="chat-explanation">
-                      <!-- Explanation banner -->
-                    </div>
-                    <div class="chat-options" id="chat-options">
-                      <!-- Button options dynamically loaded by JS -->
+
+              <!-- Item 2: Chat Simulator -->
+              <div class="stack-section">
+                <h3 class="section-title"><span class="section-num">2</span> Интерактивный чат-тренажер</h3>
+                <p style="margin-bottom: 1rem; color: var(--text-muted);">Представь, что тебе пишет незнакомец в Discord и предлагает приз. Как ты поступишь? Пройди симуляцию:</p>
+                <div class="chat-container">
+                  <div class="chat-header">
+                    <div class="avatar"><i data-lucide="user" style="display: block; width: 1.5rem; height: 1.5rem;"></i></div>
+                    <div class="chat-user-info">
+                      <span class="chat-username">Модератор_Игры99</span>
+                      <span class="chat-status">В сети</span>
                     </div>
                   </div>
+                  <div class="chat-messages" id="chat-messages">
+                    <!-- Messages dynamically loaded by JS -->
+                  </div>
+                  <div class="chat-explanation" id="chat-explanation">
+                    <!-- Explanation banner -->
+                  </div>
+                  <div class="chat-options" id="chat-options">
+                    <!-- Button options dynamically loaded by JS -->
+                  </div>
                 </div>
-                
-                <!-- Tab Content 2: Phone -->
-                <div class="sim-tab-content" id="sim-tab-phone">
-                  <div class="phone-simulator-container">
-                    <div class="smartphone">
-                      <div class="smartphone-screen">
-                        <div class="phone-speaker"></div>
-                        
-                        <div class="caller-info">
-                          <div class="caller-avatar"><i data-lucide="phone-incoming" style="width: 3.5rem; height: 3.5rem; color: var(--neon-pink);"></i></div>
-                          <div class="caller-name">Неизвестный номер</div>
-                          <div class="caller-status">Входящий вызов...</div>
-                        </div>
+              </div>
 
-                        <div class="phone-dialog-box" id="phone-dialog-box">
-                          <!-- Dialogue text after pick up -->
-                        </div>
-
-                        <div class="call-actions">
-                          <div class="phone-action-group">
-                            <button class="call-btn decline" id="call-decline" aria-label="Сбросить вызов">
-                              <i data-lucide="phone-off" style="width: 1.75rem; height: 1.75rem; color: #fff;"></i>
-                            </button>
-                            <span class="phone-label">Сбросить</span>
-                          </div>
-                          <div class="phone-action-group">
-                            <button class="call-btn accept" id="call-accept" aria-label="Ответить на вызов">
-                              <i data-lucide="phone" style="width: 1.75rem; height: 1.75rem; color: #fff;"></i>
-                            </button>
-                            <span class="phone-label">Ответить</span>
-                          </div>
-                        </div>
-
-                        <!-- Phone Feedback overlay -->
-                        <div class="phone-feedback" id="phone-feedback">
-                          <div class="phone-feedback-icon"><i data-lucide="shield-alert" style="width: 3.5rem; height: 3.5rem; color: var(--neon-pink);"></i></div>
-                          <div class="phone-feedback-title">Решение принято</div>
-                          <div class="phone-feedback-desc">Звонок был завершен.</div>
-                          <button class="reset-simulator-btn" id="reset-phone-btn">Попробовать снова</button>
-                        </div>
-
+              <!-- Item 3: Phone Simulator -->
+              <div class="stack-section">
+                <h3 class="section-title"><span class="section-num">3</span> Интерактивный звонок-тренажер</h3>
+                <p style="margin-bottom: 1rem; color: var(--text-muted);">Тебе на телефон поступает вызов с неопределенного номера. Прими решение, как поступить правильно!</p>
+                <div class="phone-simulator-container">
+                  <div class="smartphone">
+                    <div class="smartphone-screen">
+                      <div class="phone-speaker"></div>
+                      
+                      <div class="caller-info">
+                        <div class="caller-avatar"><i data-lucide="phone-incoming" style="width: 3.5rem; height: 3.5rem; color: var(--neon-pink);"></i></div>
+                        <div class="caller-name">Неизвестный номер</div>
+                        <div class="caller-status">Входящий вызов...</div>
                       </div>
+
+                      <div class="phone-dialog-box" id="phone-dialog-box">
+                        <!-- Dialogue text after pick up -->
+                      </div>
+
+                      <div class="call-actions">
+                        <div class="phone-action-group">
+                          <button class="call-btn decline" id="call-decline" aria-label="Сбросить вызов">
+                            <i data-lucide="phone-off" style="width: 1.75rem; height: 1.75rem; color: #fff;"></i>
+                          </button>
+                          <span class="phone-label">Сбросить</span>
+                        </div>
+                        <div class="phone-action-group">
+                          <button class="call-btn accept" id="call-accept" aria-label="Ответить на вызов">
+                            <i data-lucide="phone" style="width: 1.75rem; height: 1.75rem; color: #fff;"></i>
+                          </button>
+                          <span class="phone-label">Ответить</span>
+                        </div>
+                      </div>
+
+                      <!-- Phone Feedback overlay -->
+                      <div class="phone-feedback" id="phone-feedback">
+                        <div class="phone-feedback-icon"><i data-lucide="shield-alert" style="width: 3.5rem; height: 3.5rem; color: var(--neon-pink);"></i></div>
+                        <div class="phone-feedback-title">Решение принято</div>
+                        <div class="phone-feedback-desc">Звонок был завершен.</div>
+                        <button class="reset-simulator-btn" id="reset-phone-btn">Попробовать снова</button>
+                      </div>
+
                     </div>
                   </div>
                 </div>
               </div>
+
             </div>
           </div>
         </div>

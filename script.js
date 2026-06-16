@@ -37,6 +37,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Update Counter
     if (counterCurrent) counterCurrent.textContent = currentSlideIndex + 1;
+    
+    // Refresh icons inside active slides
+    if (typeof lucide !== 'undefined') {
+      lucide.createIcons();
+    }
   }
 
   if (prevBtn) {
@@ -68,31 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   updateSlides();
-
-
-  // --- SIMULATOR TABS LOGIC ---
-  const tabs = document.querySelectorAll('.sim-tab');
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      
-      const targetTab = tab.dataset.tab;
-      document.querySelectorAll('.sim-tab-content').forEach(content => {
-        content.classList.remove('active');
-      });
-      
-      const activeContent = document.getElementById(`sim-tab-${targetTab}`);
-      if (activeContent) {
-        activeContent.classList.add('active');
-      }
-      
-      // Auto scroll or refresh icons inside tabs if needed
-      if (typeof lucide !== 'undefined') {
-        lucide.createIcons();
-      }
-    });
-  });
 
 
   // --- INTERACTIVE: CHAT SIMULATOR ---
