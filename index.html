@@ -165,42 +165,126 @@
             </div>
           </div>
         </div>
-        <!-- Slide 2: InfoSec Intro -->
+        <!-- Slide 2: Security & Simulators -->
         <div class="slide" id="slide-1">
           <div class="slide-header">
-            <span class="slide-tag">Информационная безопасность</span>
-            <h2 class="slide-title">Главный закон интернета: Нельзя верить никому! <i data-lucide="shield-alert" class="title-icon"></i></h2>
+            <span class="slide-tag">Раздел 1</span>
+            <h2 class="slide-title">Безопасность в сети Интернет <i data-lucide="shield-check" class="title-icon"></i></h2>
           </div>
           <div class="slide-body">
-            <p>Интернет — это огромный и интересный город, но в нем есть свои правила безопасности. Самое главное: <strong>в сети люди могут притворяться кем угодно!</strong> Добрый модератор в игре может оказаться злоумышленником.</p>
-            <p>Запомни 4 золотых правила безопасности:</p>
-            <div class="steps-container">
-              <div class="step-item">
-                <div class="step-badge">1</div>
-                <div class="step-content">
-                  <h4 class="step-title">Храни секреты</h4>
-                  <p class="step-desc">Пароли, SMS-коды подтверждения и фотографии документов родителей нельзя отправлять НИКОМУ, даже «лучшим друзьям» в Discord или Telegram.</p>
+            <p>Интернет — это увлекательный мир, но в нем важно соблюдать правила безопасности. Прочитай 4 золотых правила и сразу закрепи их в тренажерах справа!</p>
+            
+            <div class="security-layout">
+              <!-- Left side: 4 Rules -->
+              <div class="security-rules-column">
+                <div class="steps-container">
+                  <div class="step-item">
+                    <div class="step-badge">1</div>
+                    <div class="step-content">
+                      <h4 class="step-title">Храни секреты</h4>
+                      <p class="step-desc">Пароли, SMS-коды подтверждения и фотографии документов родителей нельзя отправлять НИКОМУ, даже «лучшим друзьям» в Discord или Telegram.</p>
+                    </div>
+                  </div>
+                  <div class="step-item purple-step">
+                    <div class="step-badge">2</div>
+                    <div class="step-content">
+                      <h4 class="step-title">Странные ссылки — табу</h4>
+                      <p class="step-desc">«Получи бесплатные робуксы/подписку по этой ссылке!» — это обман. Переход по ссылке может заразить компьютер вирусом или украсть твои аккаунты.</p>
+                    </div>
+                  </div>
+                  <div class="step-item green-step">
+                    <div class="step-badge">3</div>
+                    <div class="step-content">
+                      <h4 class="step-title">Незнакомые номера = игнор</h4>
+                      <p class="step-desc">Если звонят с незнакомого номера и пугают или предлагают выиграть приз — сбрасывай. Расскажи об этом родителям.</p>
+                    </div>
+                  </div>
+                  <div class="step-item pink-step">
+                    <div class="step-badge">4</div>
+                    <div class="step-content">
+                      <h4 class="step-title">Анонимность и границы</h4>
+                      <p class="step-desc">Никому не давай свои соцсети, особенно незнакомцам в играх. Общение в играх должно оставаться в рамках игры. Ни в коем случае не соглашайся на встречи в реальном мире и не отправляй свои личные фотографии. Твой профиль должен быть анонимным — используй картинку-аватарку вместо своего реального фото.</p>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div class="step-item purple-step">
-                <div class="step-badge">2</div>
-                <div class="step-content">
-                  <h4 class="step-title">Странные ссылки — табу</h4>
-                  <p class="step-desc">«Получи бесплатные робуксы/подписку по этой ссылке!» — это обман. Переход по ссылке может заразить компьютер вирусом или украсть твои аккаунты.</p>
+              
+              <!-- Right side: Simulator Tabs -->
+              <div class="security-simulators-column">
+                <div class="simulator-tabs">
+                  <button class="sim-tab active" data-tab="chat">
+                    <i data-lucide="message-square" class="inline-icon"></i> Чат-тренажер
+                  </button>
+                  <button class="sim-tab" data-tab="phone">
+                    <i data-lucide="phone-call" class="inline-icon"></i> Звонок-тренажер
+                  </button>
                 </div>
-              </div>
-              <div class="step-item green-step">
-                <div class="step-badge">3</div>
-                <div class="step-content">
-                  <h4 class="step-title">Незнакомые номера = игнор</h4>
-                  <p class="step-desc">Если звонят с незнакомого номера и пугают или предлагают выиграть приз — сбрасывай. Расскажи об этом родителям.</p>
+                
+                <!-- Tab Content 1: Chat -->
+                <div class="sim-tab-content active" id="sim-tab-chat">
+                  <div class="chat-container">
+                    <div class="chat-header">
+                      <div class="avatar"><i data-lucide="user" style="display: block; width: 1.5rem; height: 1.5rem;"></i></div>
+                      <div class="chat-user-info">
+                        <span class="chat-username">Модератор_Игры99</span>
+                        <span class="chat-status">В сети</span>
+                      </div>
+                    </div>
+                    <div class="chat-messages" id="chat-messages">
+                      <!-- Messages dynamically loaded by JS -->
+                    </div>
+                    <div class="chat-explanation" id="chat-explanation">
+                      <!-- Explanation banner -->
+                    </div>
+                    <div class="chat-options" id="chat-options">
+                      <!-- Button options dynamically loaded by JS -->
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div class="step-item pink-step">
-                <div class="step-badge">4</div>
-                <div class="step-content">
-                  <h4 class="step-title">Анонимность и границы</h4>
-                  <p class="step-desc">Никому не давай свои соцсети, особенно незнакомцам в играх. Общение в играх должно оставаться в рамках игры. Ни в коем случае не соглашайся на встречи в реальном мире и не отправляй свои личные фотографии. Твой профиль должен быть анонимным — используй картинку-аватарку вместо своего реального фото.</p>
+                
+                <!-- Tab Content 2: Phone -->
+                <div class="sim-tab-content" id="sim-tab-phone">
+                  <div class="phone-simulator-container">
+                    <div class="smartphone">
+                      <div class="smartphone-screen">
+                        <div class="phone-speaker"></div>
+                        
+                        <div class="caller-info">
+                          <div class="caller-avatar"><i data-lucide="phone-incoming" style="width: 3.5rem; height: 3.5rem; color: var(--neon-pink);"></i></div>
+                          <div class="caller-name">Неизвестный номер</div>
+                          <div class="caller-status">Входящий вызов...</div>
+                        </div>
+
+                        <div class="phone-dialog-box" id="phone-dialog-box">
+                          <!-- Dialogue text after pick up -->
+                        </div>
+
+                        <div class="call-actions">
+                          <div class="phone-action-group">
+                            <button class="call-btn decline" id="call-decline" aria-label="Сбросить вызов">
+                              <i data-lucide="phone-off" style="width: 1.75rem; height: 1.75rem; color: #fff;"></i>
+                            </button>
+                            <span class="phone-label">Сбросить</span>
+                          </div>
+                          <div class="phone-action-group">
+                            <button class="call-btn accept" id="call-accept" aria-label="Ответить на вызов">
+                              <i data-lucide="phone" style="width: 1.75rem; height: 1.75rem; color: #fff;"></i>
+                            </button>
+                            <span class="phone-label">Ответить</span>
+                          </div>
+                        </div>
+
+                        <!-- Phone Feedback overlay -->
+                        <div class="phone-feedback" id="phone-feedback">
+                          <div class="phone-feedback-icon"><i data-lucide="shield-alert" style="width: 3.5rem; height: 3.5rem; color: var(--neon-pink);"></i></div>
+                          <div class="phone-feedback-title">Решение принято</div>
+                          <div class="phone-feedback-desc">Звонок был завершен.</div>
+                          <button class="reset-simulator-btn" id="reset-phone-btn">Попробовать снова</button>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
