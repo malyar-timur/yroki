@@ -75,114 +75,225 @@ document.addEventListener('DOMContentLoaded', () => {
   updateSlides();
 
 
-  // --- INTERACTIVE: CHAT SIMULATOR ---
+  // --- INTERACTIVE: MULTI-SCENARIO CHAT SIMULATOR ---
   const chatMessages = document.getElementById('chat-messages');
   const chatOptionsContainer = document.getElementById('chat-options');
   const chatExplanation = document.getElementById('chat-explanation');
+  const chatUsernameEl = document.querySelector('.chat-username');
+  const avatarEl = document.querySelector('.avatar');
   
+  let currentScenarioIndex = 0;
+
   const chatScenarios = [
     {
       id: 1,
-      sender: 'received',
-      text: 'Привет! 🤖 Я модератор канала Gemini AI. Поздравляю, ты выиграл годовую подписку Gemini Advanced! 🎁 Чтобы забрать приз, просто перешли мне код, который сейчас придет тебе на телефон в SMS!',
+      username: 'Robux_King_2026',
+      avatarColor: 'linear-gradient(135deg, var(--neon-cyan), var(--neon-purple))',
+      text: 'Привет! 🎉 Ты выиграл 10 000 Robux в нашей группе! Чтобы забрать приз, просто перейди по ссылке robux-free-gift.ru и введи свой логин и пароль от аккаунта Roblox.',
       options: [
         {
-          text: 'Ого! Круто! Сейчас придет код, я сразу отправлю тебе.',
-          nextId: 2,
+          text: 'Круто! Перехожу на сайт и ввожу данные аккаунта.',
           type: 'danger',
-          explanation: '❌ Ошибка! Никогда не передавай коды подтверждения из SMS! Мошенники используют их, чтобы взломать твои аккаунты, соцсети или даже украсть деньги.'
+          explanation: '❌ Ошибка! Это фишинговый сайт. Как только ты введешь пароль, мошенники мгновенно угонят твой аккаунт со всеми робуксами и скинами.'
         },
         {
-          text: 'А это безопасно? Можешь доказать, что ты настоящий модератор?',
-          nextId: 3,
+          text: 'А можно получить приз прямо в игре без ввода пароля?',
           type: 'danger',
-          explanation: '⚠️ Осторожно! Мошенники умеют отлично притворяться модераторами, подделывать профили и скриншоты. Даже если они вежливые, настоящая поддержка НИКОГДА не попросит твои пароли или SMS-коды!'
+          explanation: '⚠️ Осторожно! Мошенник продолжит манипулировать тобой, убеждая, что «система требует авторизации». Пароль от аккаунта вводить нельзя нигде, кроме официального сайта/приложения.'
         },
         {
-          text: 'Я не передаю коды из SMS и пароли никому. Я сообщу администрации о попытке взлома.',
-          nextId: 4,
+          text: 'Я не перехожу по сомнительным ссылкам и никогда не ввожу пароли на сторонних сайтах.',
           type: 'success',
-          explanation: '✅ Отлично! Ты настоящий кибер-герой! Любые коды подтверждения — это цифровые ключи от твоей личной двери. Никому их не открывай.'
+          explanation: '✅ Абсолютно верно! Запомни: никто не раздает ценные призы просто так, а требование ввести пароль на стороннем ресурсе — 100% обман.'
         }
       ]
     },
     {
       id: 2,
-      sender: 'received',
-      text: 'Отлично, жду! Как только скинешь код, твой аккаунт автоматически обновится.',
-      options: []
+      username: 'Pro_Cheater_YT',
+      avatarColor: 'linear-gradient(135deg, var(--neon-pink), var(--neon-purple))',
+      text: 'Эй! Лови секретный чит на бессмертие в Майнкрафте! Скачай файл minecraft_super_cheats.exe, отключи свой антивирус и запусти его.',
+      options: [
+        {
+          text: 'Ух ты, спасибо! Отключаю антивирус и запускаю файл.',
+          type: 'danger',
+          explanation: '❌ Опасность! Отключение антивируса и запуск файлов .exe от незнакомцев — прямой путь заразить компьютер вирусом, который заблокирует все файлы или украдет пароли родителей.'
+        },
+        {
+          text: 'А этот чит точно без вирусов? Мой антивирус ругается.',
+          type: 'danger',
+          explanation: '⚠️ Осторожно! Мошенники всегда говорят: «Антивирус ругается, потому что это чит». На самом деле они специально просят отключить защиту, чтобы обойти антивирус.'
+        },
+        {
+          text: 'Я не скачиваю программы от неизвестных людей и не собираюсь отключать антивирус.',
+          type: 'success',
+          explanation: '✅ Отличная бдительность! Файлы с расширениями .exe, .scr, .bat или .zip от незнакомцев несут прямую угрозу системе. Никогда не отключай антивирус по чьей-то просьбе.'
+        }
+      ]
     },
     {
       id: 3,
-      sender: 'received',
-      text: 'Конечно! Вот скриншот моей админ-панели и наши правила. Всё честно. Давай код, пока акция не закончилась!',
-      options: []
+      username: 'AdoptMe_Trader_Gamer',
+      avatarColor: 'linear-gradient(135deg, var(--neon-green), var(--neon-cyan))',
+      text: 'Привет! Я могу прокачать твоего обычного питомца в Adopt Me и сделать его Неоновым Легендарным! Дай мне логин и пароль от аккаунта на 5 минут, я всё быстро сделаю.',
+      options: [
+        {
+          text: 'Вау, давай! Вот мой логин и пароль, только быстрее.',
+          type: 'danger',
+          explanation: '❌ Ошибка! Как только ты передашь пароль, мошенник сменит его, привяжет свою почту, и ты навсегда потеряешь свой аккаунт и всех накопленных питомцев.'
+        },
+        {
+          text: 'Я могу передать тебе питомца через обычный обмен (trade) в игре, чтобы ты прокачал?',
+          type: 'danger',
+          explanation: '⚠️ Осторожно! Если ты отдашь питомца через обычный трейд, мошенник просто выйдет из игры и заберет твоего питомца. Трейд должен быть только взаимным!'
+        },
+        {
+          text: 'Я никогда и никому не даю данные своего аккаунта. Безопасность важнее.',
+          type: 'success',
+          explanation: '✅ Умница! Пароль — это твоя личная тайна. Ни один честный игрок, администратор или разработчик игры никогда не попросит твой пароль.'
+        }
+      ]
     },
     {
       id: 4,
-      sender: 'received',
-      text: 'Ладно, ладно... (Пользователь вышел из сети)',
-      options: []
+      username: 'Brawl_Stars_Gems_Bot',
+      avatarColor: 'linear-gradient(135deg, #f59e0b, #ef4444)',
+      text: 'Поздравляем! Твой аккаунт Brawl Stars выбран для начисления 2000 бесплатных гемов. Чтобы активировать платеж, сфотографируй банковскую карту родителей с двух сторон и пришли сюда.',
+      options: [
+        {
+          text: 'Сейчас найду мамину карту и сфотографирую.',
+          type: 'danger',
+          explanation: '❌ Огромная ошибка! Отправка фотографий банковских карт с двух сторон позволяет мошенникам списать абсолютно все деньги с карты родителей!'
+        },
+        {
+          text: 'А можно я отправлю только лицевую сторону карты?',
+          type: 'danger',
+          explanation: '⚠️ Крайне опасно! Мошенники будут давить на тебя и просить показать и обратную сторону (секретный код CVC). Ни в коем случае не трогай карты родителей.'
+        },
+        {
+          text: 'Я не трогаю карты родителей и сообщу им об этом подозрительном сообщении.',
+          type: 'success',
+          explanation: '✅ Ты спас семейный бюджет! Данные карт родителей — это строго конфиденциальная информация. Передавать её в интернет запрещено.'
+        }
+      ]
+    },
+    {
+      id: 5,
+      username: 'Stranger_Games_Net',
+      avatarColor: 'linear-gradient(135deg, #10b981, #3b82f6)',
+      text: 'Слушай, ты так круто играешь! Я тоже живу в твоем городе. Давай встретимся сегодня вечером в 21:00 около заброшенного здания за ТЦ? Я подарю тебе крутую геймерскую мышку.',
+      options: [
+        {
+          text: 'Отлично, приду! Геймерская мышка — это супер.',
+          type: 'danger',
+          explanation: '❌ Смертельно опасно! Никогда не соглашайся на встречи в реальном мире с людьми из интернета. За профилем «друга-геймера» может скрываться опасный преступник!'
+        },
+        {
+          text: 'Я приду, но возьму с собой своего младшего брата.',
+          type: 'danger',
+          explanation: '⚠️ Это всё еще опасно! Идти на встречу с неизвестными без ведома родителей категорически запрещено!'
+        },
+        {
+          text: 'Я не встречаюсь с незнакомцами из сети и не сообщаю свое местоположение.',
+          type: 'success',
+          explanation: '✅ Твоя личная безопасность превыше всего! Если кто-то зовет тебя на встречу в реале, сразу расскажи родителям или учителю.'
+        }
+      ]
     }
   ];
 
-  function renderChatScenario(scenarioId) {
+  function renderScenario() {
     if (!chatMessages || !chatOptionsContainer) return;
-    const scenario = chatScenarios.find(s => s.id === scenarioId);
-    if (!scenario) return;
-
+    
+    // Clear elements
+    chatMessages.innerHTML = '';
+    if (chatExplanation) chatExplanation.style.display = 'none';
     chatOptionsContainer.innerHTML = '';
 
+    if (currentScenarioIndex >= chatScenarios.length) {
+      // Finished all scenarios
+      if (chatUsernameEl) chatUsernameEl.textContent = 'Система безопасности';
+      if (avatarEl) avatarEl.style.background = 'linear-gradient(135deg, var(--neon-green), var(--neon-cyan))';
+      
+      const finishedMsg = document.createElement('div');
+      finishedMsg.className = 'message received';
+      finishedMsg.innerHTML = '🏆 <strong>Поздравляем!</strong> Ты успешно прошел все 5 тренировок по кибербезопасности и научился распознавать реальные угрозы в интернете!';
+      chatMessages.appendChild(finishedMsg);
+      
+      const restartBtn = document.createElement('button');
+      restartBtn.className = 'chat-option-btn';
+      restartBtn.style.textAlign = 'center';
+      restartBtn.style.borderColor = 'var(--neon-green)';
+      restartBtn.textContent = '🔄 Начать тренировку заново';
+      restartBtn.addEventListener('click', () => {
+        currentScenarioIndex = 0;
+        renderScenario();
+      });
+      chatOptionsContainer.appendChild(restartBtn);
+      return;
+    }
+
+    const scenario = chatScenarios[currentScenarioIndex];
+    
+    // Update headers
+    if (chatUsernameEl) chatUsernameEl.textContent = `${scenario.username} (Сценарий ${currentScenarioIndex + 1} из 5)`;
+    if (avatarEl) avatarEl.style.background = scenario.avatarColor;
+
+    // Render original incoming message
     const msgDiv = document.createElement('div');
-    msgDiv.className = `message ${scenario.sender}`;
+    msgDiv.className = 'message received';
     msgDiv.textContent = scenario.text;
     chatMessages.appendChild(msgDiv);
     chatMessages.scrollTop = chatMessages.scrollHeight;
 
+    // Render choice options
     scenario.options.forEach(opt => {
       const btn = document.createElement('button');
       btn.className = 'chat-option-btn';
       btn.textContent = opt.text;
+      
       btn.addEventListener('click', () => {
+        // Disable other buttons during action
+        chatOptionsContainer.querySelectorAll('button').forEach(b => b.disabled = true);
+        
+        // Show sent message
         const replyDiv = document.createElement('div');
         replyDiv.className = 'message sent';
         replyDiv.textContent = opt.text;
         chatMessages.appendChild(replyDiv);
         chatMessages.scrollTop = chatMessages.scrollHeight;
         
+        // Show explanation
         if (chatExplanation) {
           chatExplanation.style.display = 'block';
           chatExplanation.className = `chat-explanation ${opt.type}`;
           chatExplanation.textContent = opt.explanation;
         }
 
+        // Show "Next" action button after short timeout
         setTimeout(() => {
-          renderChatScenario(opt.nextId);
-        }, 1000);
+          chatOptionsContainer.innerHTML = '';
+          const nextBtn = document.createElement('button');
+          nextBtn.className = 'chat-option-btn';
+          nextBtn.style.textAlign = 'center';
+          nextBtn.style.borderColor = 'var(--neon-cyan)';
+          nextBtn.textContent = currentScenarioIndex < chatScenarios.length - 1 ? '➡️ Следующий сценарий' : '🏁 Завершить тренировку';
+          
+          nextBtn.addEventListener('click', () => {
+            currentScenarioIndex++;
+            renderScenario();
+          });
+          
+          chatOptionsContainer.appendChild(nextBtn);
+        }, 1200);
       });
+      
       chatOptionsContainer.appendChild(btn);
     });
-
-    if (scenario.options.length === 0) {
-      const resetBtn = document.createElement('button');
-      resetBtn.className = 'chat-option-btn';
-      resetBtn.style.textAlign = 'center';
-      resetBtn.style.borderColor = 'var(--neon-cyan)';
-      resetBtn.textContent = '🔄 Начать симуляцию заново';
-      resetBtn.addEventListener('click', resetChatGame);
-      chatOptionsContainer.appendChild(resetBtn);
-    }
-  }
-
-  function resetChatGame() {
-    if (!chatMessages || !chatExplanation) return;
-    chatMessages.innerHTML = '';
-    chatExplanation.style.display = 'none';
-    renderChatScenario(1);
   }
 
   if (chatMessages) {
-    resetChatGame();
+    renderScenario();
   }
 
 
