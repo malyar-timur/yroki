@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>НейроСтарт: ИИ для школьников 8-12 лет | Курс</title>
+  <meta name="description" content="Интерактивная презентация-курс по работе с нейросетями для школьников. Как развернуть среду разработки, настроить VPN, получить аккаунт Gemini и защитить себя в сети.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header Section -->
+  <header>
+    <div class="logo" id="app-logo">
+      <span>🤖</span> НейроСтарт
+    </div>
+    <nav aria-label="Основная навигация">
+      <ul class="nav-links">
+        <li><a href="#" class="nav-item active">Презентация</a></li>
+        <li><a href="https://github.com/malyar-timur/yroki" target="_blank" class="nav-item">GitHub Репозиторий</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Presentation Area -->
+  <main>
+    <!-- Sidebar navigation for scalability -->
+    <aside class="presentation-sidebar" aria-label="Список разделов презентации">
+      <h2 class="sidebar-title">Содержание</h2>
+      <div class="slide-list" id="sidebar-slide-list">
+        <button class="slide-list-item active" data-slide="0">
+          <span class="slide-num">1</span>
+          <span>Введение в ИИ</span>
+        </button>
+        <button class="slide-list-item" data-slide="1">
+          <span class="slide-num">2</span>
+          <span>Безопасность в сети</span>
+        </button>
+        <button class="slide-list-item" data-slide="2">
+          <span class="slide-num">3</span>
+          <span>Тренажер: Чат-контроль</span>
+        </button>
+        <button class="slide-list-item" data-slide="3">
+          <span class="slide-num">4</span>
+          <span>Тренажер: Звонок</span>
+        </button>
+        <button class="slide-list-item" data-slide="4">
+          <span class="slide-num">5</span>
+          <span>Шаг 1: Установка VPN</span>
+        </button>
+        <button class="slide-list-item" data-slide="5">
+          <span class="slide-num">6</span>
+          <span>Шаг 2: Аккаунт Gemini</span>
+        </button>
+        <button class="slide-list-item" data-slide="6">
+          <span class="slide-num">7</span>
+          <span>Шаг 3: Ввод API ключа</span>
+        </button>
+        <button class="slide-list-item" data-slide="7">
+          <span class="slide-num">8</span>
+          <span>Экономика и подписки</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Presentation View Slider -->
+    <section class="presentation-view" aria-label="Слайды презентации">
+      <div class="slider-container" id="presentation-slider">
+        
+        <!-- Slide 1: Welcome -->
+        <div class="slide active" id="slide-0">
+          <div class="slide-header">
+            <span class="slide-tag">Старт курса</span>
+            <h1 class="slide-title">Привет, будущий инженер искусственного интеллекта! 🚀</h1>
+          </div>
+          <div class="slide-body">
+            <p>Добро пожаловать в мир нейросетей! Этот интерактивный курс разработан специально для ребят <strong>8-12 лет</strong>. Мы научим тебя настраивать рабочее пространство, пользоваться умным ИИ-помощником <span class="highlight-cyan">Gemini</span> и создавать крутые проекты.</p>
+            <p>Но самое главное правило в мире технологий — это <span class="highlight-pink">безопасность</span>. Перед тем как запустить код, мы научимся защищать себя и свои данные от сетевых угроз.</p>
+            <div class="grid-container">
+              <div class="feature-card cyan">
+                <span class="card-icon">🛡️</span>
+                <h3 class="card-title">Безопасность</h3>
+                <p class="card-desc">Узнай, как не стать жертвой мошенников и сохранить свои пароли.</p>
+              </div>
+              <div class="feature-card purple">
+                <span class="card-icon">⚙️</span>
+                <h3 class="card-title">Развертывание среды</h3>
+                <p class="card-desc">Пошаговая настройка VPN, запуск окружения и подключение API.</p>
+              </div>
+              <div class="feature-card green">
+                <span class="card-icon">⚡</span>
+                <h3 class="card-title">Работа с Gemini</h3>
+                <p class="card-desc">Научись давать инструкции нейросети и создавать умные программы.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2: InfoSec Intro -->
+        <div class="slide" id="slide-1">
+          <div class="slide-header">
+            <span class="slide-tag">Информационная безопасность</span>
+            <h2 class="slide-title">Главный закон интернета: Нельзя верить никому! 🛑</h2>
+          </div>
+          <div class="slide-body">
+            <p>Интернет — это огромный и интересный город, но в нем есть свои правила безопасности. Самое главное: <strong>в сети люди могут притворяться кем угодно!</strong> Добрый модератор в игре может оказаться злоумышленником.</p>
+            <p>Запомни 4 золотых правила безопасности:</p>
+            <div class="steps-container">
+              <div class="step-item">
+                <div class="step-badge">1</div>
+                <div class="step-content">
+                  <h4 class="step-title">Храни секреты</h4>
+                  <p class="step-desc">Пароли, SMS-коды подтверждения и фотографии документов родителей нельзя отправлять НИКОМУ, даже «лучшим друзьям» в Discord или Telegram.</p>
+                </div>
+              </div>
+              <div class="step-item purple-step">
+                <div class="step-badge">2</div>
+                <div class="step-content">
+                  <h4 class="step-title">Странные ссылки — табу</h4>
+                  <p class="step-desc">«Получи бесплатные робуксы/подписку по этой ссылке!» — это обман. Переход по ссылке может заразить компьютер вирусом или украсть твои аккаунты.</p>
+                </div>
+              </div>
+              <div class="step-item green-step">
+                <div class="step-badge">3</div>
+                <div class="step-content">
+                  <h4 class="step-title">Незнакомые номера = игнор</h4>
+                  <p class="step-desc">Если звонят с незнакомого номера и пугают или предлагают выиграть приз — сбрасывай. Расскажи об этом родителям.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3: Interactive Chat Simulator -->
+        <div class="slide" id="slide-2">
+          <div class="slide-header">
+            <span class="slide-tag">Интерактивный тренажер</span>
+            <h2 class="slide-title">Тренажер: Кибер-контроль общения 💬</h2>
+          </div>
+          <div class="slide-body">
+            <p>Представь, что тебе пишет незнакомец в Discord и предлагает приз. Как ты поступишь? Попробуй пройти симуляцию ниже!</p>
+            
+            <div class="chat-container">
+              <div class="chat-header">
+                <div class="avatar">❓</div>
+                <div class="chat-user-info">
+                  <span class="chat-username">Модератор_Игры99</span>
+                  <span class="chat-status">В сети</span>
+                </div>
+              </div>
+              <div class="chat-messages" id="chat-messages">
+                <!-- Messages dynamically loaded by JS -->
+              </div>
+              <div class="chat-explanation" id="chat-explanation">
+                <!-- Explanation banner -->
+              </div>
+              <div class="chat-options" id="chat-options">
+                <!-- Button options dynamically loaded by JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 4: Interactive Phone Simulator -->
+        <div class="slide" id="slide-3">
+          <div class="slide-header">
+            <span class="slide-tag">Интерактивный тренажер</span>
+            <h2 class="slide-title">Тренажер: Звонок с неизвестного номера 📞</h2>
+          </div>
+          <div class="slide-body">
+            <p>Тебе на телефон поступает вызов с неопределенного номера. Прими решение, как поступить правильно!</p>
+            
+            <div class="phone-simulator-container">
+              <div class="smartphone">
+                <div class="smartphone-screen">
+                  <div class="phone-speaker"></div>
+                  
+                  <div class="caller-info">
+                    <div class="caller-avatar">📞</div>
+                    <div class="caller-name">Неизвестный номер</div>
+                    <div class="caller-status">Входящий вызов...</div>
+                  </div>
+
+                  <div class="phone-dialog-box" id="phone-dialog-box">
+                    <!-- Dialogue text after pick up -->
+                  </div>
+
+                  <div class="call-actions">
+                    <div class="phone-action-group">
+                      <button class="call-btn decline" id="call-decline" aria-label="Сбросить вызов">
+                        ❌
+                      </button>
+                      <span class="phone-label">Сбросить</span>
+                    </div>
+                    <div class="phone-action-group">
+                      <button class="call-btn accept" id="call-accept" aria-label="Ответить на вызов">
+                        📞
+                      </button>
+                      <span class="phone-label">Ответить</span>
+                    </div>
+                  </div>
+
+                  <!-- Phone Feedback overlay -->
+                  <div class="phone-feedback" id="phone-feedback">
+                    <div class="phone-feedback-icon">🚨</div>
+                    <div class="phone-feedback-title">Решение принято</div>
+                    <div class="phone-feedback-desc">Звонок был завершен.</div>
+                    <button class="reset-simulator-btn" id="reset-phone-btn">Попробовать снова</button>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 5: Setup Step 1 (Happ VPN) -->
+        <div class="slide" id="slide-4">
+          <div class="slide-header">
+            <span class="slide-tag">Развертывание среды</span>
+            <h2 class="slide-title">Шаг 1: Установка и настройка Happ VPN 🌐</h2>
+          </div>
+          <div class="slide-body">
+            <p>Чтобы запустить ИИ-среду в некоторых регионах, нам необходим VPN. Мы будем использовать программу <span class="highlight-cyan">Happ VPN</span>.</p>
+            <div class="steps-container">
+              <div class="step-item">
+                <div class="step-badge">A</div>
+                <div class="step-content">
+                  <h4 class="step-title">Установка Happ VPN</h4>
+                  <p class="step-desc">Скачай клиент Happ VPN для ПК и запусти установщик. Следуй простым подсказкам на экране.</p>
+                </div>
+              </div>
+              <div class="step-item purple-step">
+                <div class="step-badge">B</div>
+                <div class="step-content">
+                  <h4 class="step-title">Авторизация в системе</h4>
+                  <p class="step-desc">Открой папку на Рабочем столе твоего ПК (которую подготовили преподаватели). Там лежит текстовый файл с твоим логином и паролем для сети Happ.</p>
+                </div>
+              </div>
+              <div class="step-item green-step">
+                <div class="step-badge">C</div>
+                <div class="step-content">
+                  <h4 class="step-title">Запуск туннеля</h4>
+                  <p class="step-desc">Введи данные авторизации в приложении Happ VPN и нажми кнопку «Подключить» (Connect). Твоя сеть теперь защищена и настроена!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 6: Setup Step 2 (Gemini Account) -->
+        <div class="slide" id="slide-5">
+          <div class="slide-header">
+            <span class="slide-tag">Доступ к нейросети</span>
+            <h2 class="slide-title">Шаг 2: Создание аккаунта в другом регионе 🔑</h2>
+          </div>
+          <div class="slide-body">
+            <p>Нейросеть <span class="highlight-purple">Gemini</span> работает не во всех странах из-за ограничений. Для работы нужен аккаунт другого региона (например, Европы или США).</p>
+            <div class="grid-container" style="margin-top: 1.5rem;">
+              <div class="feature-card cyan">
+                <span class="card-icon">🛒</span>
+                <h3 class="card-title">Способ A: Покупка аккаунта</h3>
+                <p class="card-desc">Самый простой и быстрый способ. Готовый аккаунт с доступом можно приобрести на проверенных платформах или получить у преподавателя.</p>
+              </div>
+              <div class="feature-card purple">
+                <span class="card-icon">🛠️</span>
+                <h3 class="card-title">Способ Б: Регистрация с VPN</h3>
+                <p class="card-desc">Включи Happ VPN, выбери регион «Германия» или «США», зайди на сайт Google и создай новый аккаунт, подтвердив его кодом.</p>
+              </div>
+            </div>
+            <p style="margin-top: 1.5rem; font-size: 0.95rem;" class="highlight-pink">⚠️ Важно: при покупке аккаунта никогда не используй свои личные банковские карты напрямую без присмотра родителей!</p>
+          </div>
+        </div>
+
+        <!-- Slide 7: Setup Step 3 (API Key inside Program) -->
+        <div class="slide" id="slide-6">
+          <div class="slide-header">
+            <span class="slide-tag">Запуск среды разработки</span>
+            <h2 class="slide-title">Шаг 3: Подключение ключа к программе Gemini ⚙️</h2>
+          </div>
+          <div class="slide-body">
+            <p>Когда VPN запущен и аккаунт готов, тебе нужно получить секретный <strong>API Key</strong> и вставить его в среду разработки, чтобы твоя программа начала общаться с ИИ.</p>
+            
+            <div class="steps-container">
+              <div class="step-item">
+                <div class="step-badge">1</div>
+                <div class="step-content">
+                  <p class="step-desc">Перейди на Google AI Studio, войди под своим новым аккаунтом и нажми кнопку <span class="highlight-cyan">«Get API Key»</span>.</p>
+                </div>
+              </div>
+              <div class="step-item purple-step">
+                <div class="step-badge">2</div>
+                <div class="step-content">
+                  <p class="step-desc">Скопируй длинный код API ключа.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="code-container">
+              <div class="code-header">
+                <div class="code-title"><span>📄</span> config.json</div>
+                <div class="code-dots">
+                  <div class="code-dot red"></div>
+                  <div class="code-dot yellow"></div>
+                  <div class="code-dot green"></div>
+                </div>
+              </div>
+              <div class="code-body">
+{<br>
+&nbsp;&nbsp;<span style="color: #e06c75;">"GEMINI_API_KEY"</span>: <span style="color: #98c379;">"AIzaSyD_Твой_Секретный_Код_Из_Папки"</span>,<br>
+&nbsp;&nbsp;<span style="color: #e06c75;">"ENVIRONMENT"</span>: <span style="color: #98c379;">"development"</span>,<br>
+&nbsp;&nbsp;<span style="color: #e06c75;">"VPN_TUNNEL"</span>: <span style="color: #d19a66;">true</span><br>
+}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 8: Economics and Sanctions -->
+        <div class="slide" id="slide-7">
+          <div class="slide-header">
+            <span class="slide-tag">Экономика процесса</span>
+            <h2 class="slide-title">Как получить платные подписки под санкциями? 💰</h2>
+          </div>
+          <div class="slide-body">
+            <p>Из-за блокировок оплатить зарубежные сервисы напрямую российской картой не получится. Но есть проверенные и безопасные способы обойти эти ограничения:</p>
+            
+            <div class="stats-grid">
+              <div class="stat-box">
+                <div class="stat-val">01</div>
+                <div class="stat-label">Проверенные маркетплейсы</div>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Использование площадок (Plati.market, FunPay), где продавцы оплачивают подписку за тебя. Выбирай только продавцов с высоким рейтингом!</p>
+              </div>
+              <div class="stat-box">
+                <div class="stat-val pink">02</div>
+                <div class="stat-label">Виртуальные зарубежные карты</div>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Создание виртуальных карт через сервисы Pyypl или турецкие платежные системы (Ininal) для самостоятельной оплаты.</p>
+              </div>
+            </div>
+
+            <p style="margin-top: 1.5rem; text-align: center;" class="highlight-green">Помни: всегда согласовывай покупки с родителями! Финансовая грамотность — часть твоей кибербезопасности.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Controls Panel -->
+      <div class="controls-panel">
+        <button class="control-btn" id="prev-btn" disabled aria-label="Предыдущий слайд">
+          ← Назад
+        </button>
+        <div class="progress-bar-container">
+          <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        <div class="slide-counter">
+          Слайд <span id="counter-current">1</span> из <span id="counter-total">8</span>
+        </div>
+        <button class="control-btn" id="next-btn" aria-label="Следующий слайд">
+          Вперед →
+        </button>
+      </div>
+
+      <!-- Footer keyboard tips -->
+      <div class="keyboard-tips">
+        <span>Подсказка: ты можешь переключать слайды стрелками <span class="key-cap">←</span> и <span class="key-cap">→</span> на клавиатуре</span>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
