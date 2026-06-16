@@ -108,7 +108,6 @@ main {
   background: rgba(11, 15, 25, 0.6);
   backdrop-filter: blur(20px);
   border: none;
-  border-right: 1px solid var(--card-border);
   border-radius: 0;
   padding: 1.5rem;
   display: flex;
@@ -292,7 +291,6 @@ main {
   background: rgba(11, 15, 25, 0.6);
   backdrop-filter: blur(12px);
   border: none;
-  border-top: 1px solid var(--card-border);
   padding: 1.25rem 3.5rem;
   border-radius: 0;
 }
