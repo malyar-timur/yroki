@@ -173,11 +173,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 12000); // Fail-safe timer in case audio is blocked
   }
 
+  function generateRandomRussianNumber() {
+    const prefixes = ['901', '902', '903', '904', '905', '906', '908', '909', '910', '911', '912', '913', '914', '915', '916', '917', '918', '919', '920', '921', '922', '923', '924', '925', '926', '927', '928', '929', '930', '931', '932', '933', '936', '937', '938', '939', '950', '951', '952', '953', '956', '958', '960', '961', '962', '963', '964', '965', '966', '967', '968', '969', '977', '978', '980', '981', '982', '983', '984', '985', '986', '987', '988', '989', '991', '992', '993', '994', '995', '996', '997', '999', '495', '499'];
+    const prefix = prefixes[Math.floor(Math.random() * prefixes.length)];
+    const part1 = Math.floor(100 + Math.random() * 900);
+    const part2 = Math.floor(10 + Math.random() * 90);
+    const part3 = Math.floor(10 + Math.random() * 90);
+    return `+7 (${prefix}) ${part1}-${part2}-${part3}`;
+  }
+
   function selectRandomScam() {
     const randomIndex = Math.floor(Math.random() * phoneScams.length);
     currentScam = phoneScams[randomIndex];
     if (callerNameEl) {
-      callerNameEl.textContent = currentScam.caller;
+      callerNameEl.textContent = generateRandomRussianNumber();
     }
   }
 
