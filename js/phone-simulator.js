@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const callerNameEl = document.querySelector('.caller-name');
   const phoneOptionsWrapper = document.getElementById('phone-options-wrapper');
   const phoneOptionsList = document.getElementById('phone-options-list');
+  const declineActionGroup = document.getElementById('decline-action-group');
+  const acceptActionGroup = document.getElementById('accept-action-group');
 
   // List of 11 realistic phone scam scenarios with pre-generated MP3 neural voice files and multiple choices
   const phoneScams = [
@@ -235,11 +237,8 @@ document.addEventListener('DOMContentLoaded', () => {
         callerStatus.textContent = 'Разговор...';
         callerStatus.style.color = 'var(--neon-green)';
       }
-      callAcceptBtn.style.display = 'none';
-      callDeclineBtn.style.width = '120px';
-      callDeclineBtn.style.borderRadius = '30px';
-      const label = callDeclineBtn.parentElement.querySelector('.phone-label');
-      if (label) label.textContent = 'Положить';
+      if (acceptActionGroup) acceptActionGroup.style.display = 'none';
+      if (declineActionGroup) declineActionGroup.style.display = 'flex';
       
       if (phoneDialogBox && currentScam) {
         phoneDialogBox.style.display = 'block';
@@ -274,6 +273,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
       // Hide options container
       if (phoneOptionsWrapper) phoneOptionsWrapper.style.display = 'none';
+      if (declineActionGroup) declineActionGroup.style.display = 'none';
 
       // If user hung up during active call, it is always a correct action!
       if (hasPickedUp) {
@@ -341,14 +341,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (phoneFeedback) phoneFeedback.style.display = 'none';
       if (phoneDialogBox) phoneDialogBox.style.display = 'none';
-      if (callAcceptBtn) callAcceptBtn.style.display = 'flex';
-      if (callDeclineBtn) {
-        callDeclineBtn.style.display = 'flex';
-        callDeclineBtn.style.width = '60px';
-        callDeclineBtn.style.borderRadius = '50%';
-        const label = callDeclineBtn.parentElement.querySelector('.phone-label');
-        if (label) label.textContent = 'Сбросить';
-      }
+      
+      // Reset button displays
+      if (acceptActionGroup) acceptActionGroup.style.display = 'flex';
+      if (declineActionGroup) declineActionGroup.style.display = 'none';
+
       if (callerStatus) {
         callerStatus.textContent = 'Входящий вызов...';
         callerStatus.style.color = 'var(--neon-pink)';
