@@ -31,6 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentSlideIndex = getSlideIndexFromHash();
 
   function updateSlides() {
+    // Scroll window to the top on slide transition
+    window.scrollTo(0, 0);
+
     slides.forEach((slide, index) => {
       slide.classList.remove('active', 'prev-slide');
       if (index === currentSlideIndex) {
